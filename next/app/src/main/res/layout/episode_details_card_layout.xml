@@ -6,8 +6,10 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".EpisodeDetailsActivity">
     <LinearLayout>
         <RelativeLayout>
-            <ImageView></ImageView>
-            <ImageView></ImageView>
+            <ImageView />
+            <ImageView />
+            <TextView />
+
         </RelativeLayout>
         <LinearLayout>
             
