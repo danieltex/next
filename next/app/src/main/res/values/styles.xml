@@ -1,8 +1,14 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="episode_details"/>
+    <style name="episode_details_title" parent="episode_details">
+        <item></item>
+    </style>
+    <style name="episode_details_summary" parent="episode_details">
+        <item></item>
+    </style>
+    <style name="episode_details_summary_content" parent="episode_details">
+        <item></item>
     </style>
 
 </resources>
