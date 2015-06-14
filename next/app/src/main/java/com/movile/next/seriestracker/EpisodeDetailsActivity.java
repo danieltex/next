@@ -6,12 +6,49 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class EpisodeDetailsActivity extends ActionBarActivity {
-
+public class EpisodeDetailsActivity extends Activity {
+    private static String TAG = "EpisodeDetail";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_card_layout);
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
+    }
+
+    @Override
+    private void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+    }
+
+    @Override
+    private void onResume {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    private void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+    @Override
+    private void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
+
+    @Override
+    private void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+    }
+
+    @Override
+    private void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart");
     }
 
     @Override
