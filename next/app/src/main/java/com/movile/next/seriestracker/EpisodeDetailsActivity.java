@@ -1,13 +1,13 @@
 package com.movile.next.seriestracker;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.util.Log;
 
 public class EpisodeDetailsActivity extends Activity {
-    private static String TAG = "EpisodeDetail";
+    private static final String TAG = "EpisodeDetail";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.episode_details_card_layout);
@@ -16,37 +16,37 @@ public class EpisodeDetailsActivity extends Activity {
     }
 
     @Override
-    private void onStart() {
+    protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart");
     }
 
     @Override
-    private void onResume {
+    protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume");
     }
 
     @Override
-    private void onPause() {
+    protected void onPause() {
         super.onPause();
         Log.d(TAG, "onPause");
     }
 
     @Override
-    private void onStop() {
+    protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop");
     }
 
     @Override
-    private void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
     }
 
     @Override
-    private void onRestart() {
+    protected void onRestart() {
         super.onRestart();
         Log.d(TAG, "onRestart");
     }
