@@ -1,14 +1,8 @@
 <resources>
 
-    <style name="episode_details"/>
-    <style name="episode_details_title" parent="episode_details">
-        <item></item>
-    </style>
-    <style name="episode_details_summary" parent="episode_details">
-        <item></item>
-    </style>
-    <style name="episode_details_summary_content" parent="episode_details">
-        <item></item>
+    <!-- Base application theme. -->
+    <style name="AppTheme">
+        <!-- Customize your theme here. -->
     </style>
 
 </resources>
