@@ -6,18 +6,49 @@
     tools:context="com.movile.next.seriestracker.SeasonDetailsActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="248dp">
-        <ImageView
-            android:id="@+id/season_details_screenshot"
+        android:layout_height="wrap_content">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/highlight_placeholder"
-            android:scaleType="centerCrop"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/overlay"
-            android:scaleType="fitXY" />
+            android:layout_height="248dp">
+            <ImageView
+                android:id="@+id/season_details_screenshot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/highlight_placeholder"
+                android:scaleType="centerCrop"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/overlay"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+            <ImageView
+                android:id="@+id/season_details_show"
+                android:layout_width="88dp"
+                android:layout_height="128dp"
+                android:layout_marginTop="184dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/season_details_show_placeholder"
+                android:scaleType="centerCrop"/>
+            <RelativeLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignBottom="@+id/season_details_show"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/rating"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:id="@+id/season_detail_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="99"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
     </RelativeLayout>
-
 </ScrollView>
