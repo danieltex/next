@@ -7,6 +7,10 @@
     <string name="base_navigation_drawer_open">Open</string>
     <string name="base_navigation_drawer_close">Close</string>
     <string name="episode_details_title">Title</string>
+    <string name="title_activity_season_details">Season Details</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
     <!-- TO BE CONTINUED -->
 

@@ -1,7 +1,8 @@
 package com.movile.next.seriestracker;
 
 import android.app.Activity;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,51 +17,72 @@ import com.movile.next.seriestracker.util.FormatUtil;
 import com.movile.next.seriestracker.business.FetchLocalEpisodeDetails;
 
 
-import java.text.DateFormat;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 
 interface OnOperationListener {
-    public void onOperationSuccess(Episode result);
+    public void onOperationSuccess(Episode episode);
+    public void onOperationSuccess(Bitmap bitmap);
 }
 
 public class EpisodeDetailsActivity extends Activity implements OnOperationListener{
 
-    public class OperationAsyncTask extends AsyncTask<Void, Void, Episode> {
+    public class OperationAsyncTaskEpisode extends AsyncTask<Void, Void, Episode> {
         private EpisodeDetailsActivity mListener;
 
-        public OperationAsyncTask(EpisodeDetailsActivity listener)
-        {
-            mListener = listener;
+        public OperationAsyncTaskEpisode(EpisodeDetailsActivity listener) { mListener = listener; }
+
+        protected Episode doInBackground(Void ... params) { return new FetchLocalEpisodeDetails().get(mListener); }
+        protected void onPostExecute(Episode episode) { mListener.onOperationSuccess(episode); }
+    }
+
+    public class RemoteImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
+        private EpisodeDetailsActivity mListener;
+
+        public RemoteImageAsyncTask(EpisodeDetailsActivity listener) { mListener = listener; }
+
+        protected Bitmap doInBackground(String ... params) {
+            String url = params[0];
+            Bitmap bitmap = null;
+            try {
+                bitmap = BitmapFactory.decodeStream(new URL(url).openStream());
+            } catch (FileNotFoundException e) {
+                Log.e(TAG, "Image not available on " + url, e);
+            } catch (IOException e) {
+                Log.e(TAG, "Error fetching image from " + url, e);
+            }
+
+            return bitmap;
         }
 
-        protected  Episode doInBackground(Void ... params)
-        {
-            return new FetchLocalEpisodeDetails().get(mListener);
-        }
-
-        protected void onPostExecute(Episode episode)
-        {
-            mListener.onOperationSuccess(episode);
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            mListener.onOperationSuccess(bitmap);
         }
     }
 
     @Override
-    public void onOperationSuccess(Episode result)
+    public void onOperationSuccess(Episode episode)
     {
-        TextView title = (TextView) findViewById(R.id.episode_details_title);
-        TextView overview = (TextView) findViewById(R.id.episode_details_overview);
-        TextView first_aired = (TextView) findViewById(R.id.episode_details_first_aired);
-        ImageView screenshot = (ImageView) findViewById(R.id.episode_details_screenshot);
+        ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
+        ((TextView) findViewById(R.id.episode_details_overview)).setText(episode.overview());
 
-        title.setText(result.title());
-        overview.setText(result.overview());
+        Date date_aired = FormatUtil.formatDate(episode.firstAired());
+        ((TextView) findViewById(R.id.episode_details_first_aired)).setText(FormatUtil.formatDate(date_aired));
 
-        Date date_aired = FormatUtil.formatDate(result.firstAired());
-        first_aired.setText(FormatUtil.formatDate(date_aired));
+        String screenshotURI = episode.images().screenshot().get(Images.ImageSize.MEDIUM);
+        new RemoteImageAsyncTask(this).execute(screenshotURI);
+    }
 
-//        String screenshotURI = result.images().screenshot().get(Images.ImageSize.FULL);
-//        screenshot.setImageURI(Uri.parse(screenshotURI));
-
+    @Override
+    public void onOperationSuccess(Bitmap bitmap)
+    {
+        if (bitmap != null) {
+            Log.i(TAG, "setting bitmap");
+            ((ImageView) findViewById(R.id.episode_details_screenshot)).setImageBitmap(bitmap);
+        }
     }
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
@@ -70,7 +92,7 @@ public class EpisodeDetailsActivity extends Activity implements OnOperationListe
         setContentView(R.layout.episode_details_card_layout);
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-        new OperationAsyncTask(this).execute();
+        new OperationAsyncTaskEpisode(this).execute();
     }
 
     @Override

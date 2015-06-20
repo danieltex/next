@@ -1,0 +1,23 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.movile.next.seriestracker.SeasonDetailsActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp">
+        <ImageView
+            android:id="@+id/season_details_screenshot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/highlight_placeholder"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/overlay"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
+
+</ScrollView>
