@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.movile.next.seriestracker.model.Images;
 import com.movile.next.seriestracker.model.Season;
+import com.movile.next.seriestracker.model.Show;
 import com.movile.next.seriestracker.util.EpisodeItemAdapter;
 import com.movile.next.seriestracker.view.SeasonDetailsPresenter;
 import com.movile.next.seriestracker.view.SeasonDetailsView;
@@ -23,26 +24,27 @@ public class SeasonDetailsActivity extends Activity implements SeasonDetailsView
     private SeasonDetailsPresenter mPresenter;
 
     @Override
-    public void displaySeason(Season season) {
+    public void displaySeason(Show show) {
 //        ListView view = (ListView) findViewById(R.id.episode_list_view);
 //        EpisodeItemAdapter adapter = new EpisodeItemAdapter(this, R.id.episode_item, null);
 //        view.setAdapter(adapter);
 
+        ((TextView) findViewById(R.id.season_first_aired_year)).setText(show.year().toString());
         ((TextView) findViewById(R.id.season_detail_rating))
-                .setText(String.format("%.1f", season.rating()));
+                .setText(String.format("%.1f", show.rating()));
 
-        ImageView show = (ImageView) findViewById(R.id.season_details_show);
+        ImageView image_show = (ImageView) findViewById(R.id.season_details_show);
         Glide
                 .with(this)
-                .load(season.images().poster().get(Images.ImageSize.MEDIUM))
+                .load(show.images().poster().get(Images.ImageSize.MEDIUM))
                 .placeholder(R.drawable.season_details_show_placeholder)
                 .centerCrop()
-                .into(show);
+                .into(image_show);
 
         ImageView screenshot = (ImageView) findViewById(R.id.season_details_screenshot);
         Glide
             .with(this)
-            .load(season.images().fanart().get(Images.ImageSize.MEDIUM))
+            .load(show.images().fanart().get(Images.ImageSize.MEDIUM))
             .placeholder(R.drawable.highlight_placeholder)
             .centerCrop()
             .into(screenshot);
