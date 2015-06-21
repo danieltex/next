@@ -4,51 +4,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.movile.next.seriestracker.SeasonDetailsActivity">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="248dp">
-            <ImageView
-                android:id="@+id/season_details_screenshot"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/highlight_placeholder"
-                android:scaleType="centerCrop"/>
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/overlay"
-                android:scaleType="fitXY" />
-        </RelativeLayout>
-            <ImageView
-                android:id="@+id/season_details_show"
-                android:layout_width="88dp"
-                android:layout_height="128dp"
-                android:layout_marginTop="184dp"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/season_details_show_placeholder"
-                android:scaleType="centerCrop"/>
+            android:layout_height="wrap_content"
+            android:background="#e1e1e1">
             <RelativeLayout
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignBottom="@+id/season_details_show"
-                android:layout_marginRight="16dp"
-                android:layout_alignParentRight="true">
-            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/rating"
-                android:scaleType="fitXY"/>
-            <TextView
-                android:id="@+id/season_detail_rating"
+                android:layout_height="248dp">
+                <ImageView
+                    android:id="@+id/season_details_screenshot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/highlight_placeholder"
+                    android:scaleType="centerCrop"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/overlay"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="99"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:layout_centerInParent="true"/>
+                android:layout_marginTop="151dp"
+                android:layout_marginLeft="16dp">
+                <TextView
+                    android:id="@+id/season_first_aired_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2015"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp"/>
+                <ImageView
+                    android:id="@+id/season_details_show"
+                    android:layout_width="88dp"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@id/season_first_aired_year"
+                    android:src="@drawable/season_details_show_placeholder"
+                    android:scaleType="centerCrop"/>
+                <RelativeLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignBottom="@+id/season_details_show"
+                    android:layout_marginRight="16dp"
+                    android:layout_alignParentRight="true">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/rating"
+                        android:scaleType="fitXY"/>
+                    <TextView
+                        android:id="@+id/season_detail_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9.9"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/season_details_episodes_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#9b9b9b"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:text="Episodes"
+                    android:layout_alignLeft="@id/season_details_show"
+                    android:layout_below="@id/season_details_show"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginBottom="17dp" />
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </LinearLayout>
 </ScrollView>
