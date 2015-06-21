@@ -10,19 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.movile.next.seriestracker.business.EpisodeRemoteService;
 import com.movile.next.seriestracker.model.Episode;
 import com.movile.next.seriestracker.model.Images;
-import com.movile.next.seriestracker.util.ApiConfiguration;
 import com.movile.next.seriestracker.util.FormatUtil;
 import com.movile.next.seriestracker.view.EpisodeDetailsPresenter;
 import com.movile.next.seriestracker.view.EpisodeDetailsView;
 
 import java.util.Date;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsView {
     private EpisodeDetailsPresenter mPresenter;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/episode_item"
+    android:id="@+id/episode_item_tba"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -19,7 +19,6 @@
             android:scaleType="fitXY"
             android:src="@drawable/episode_item_number"/>
         <TextView
-            android:id="@+id/episode_item_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E??"
@@ -32,7 +31,7 @@
         android:id="@+id/episode_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Episode Title"
+        android:text="TBA"
         android:textColor="#4a4a4a"
         android:textSize="16sp"
         android:fontFamily="sans-serif"/>
